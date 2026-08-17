@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="医疗 AI Agent 本地系统管理" />
+    <title>MedAgent 系统管理</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/admin.css" />
+  </head>
+  <body class="admin-body">
+    <header class="admin-topbar">
+      <div class="brand"><div class="brand-mark">M</div><div><strong>MedAgent</strong><span>系统管理</span></div></div>
+      <div class="admin-identity"><span id="admin-name"></span><a id="agent-link" href="/" hidden>返回 Agent</a><button id="admin-logout">退出登录</button></div>
+    </header>
+    <main class="admin-main">
+      <section class="admin-heading"><p class="eyebrow">ACCESS CONTROL</p><h1>账号与数据权限</h1><p>账号、角色和患者范围均由后端授权；页面隐藏不是安全边界。</p></section>
+
+      <section class="admin-card">
+        <div class="card-heading"><div><h2>创建账号</h2><p>用户名创建后不能在当前版本中修改。</p></div></div>
+        <form id="create-user-form" class="create-grid">
+          <label>用户名<input id="new-username" required minlength="3" pattern="[A-Za-z0-9._-]+" /></label>
+          <label>显示姓名<input id="new-display-name" required /></label>
+          <label>科室/部门<input id="new-department" required /></label>
+          <label>初始密码<input id="new-password" type="password" required minlength="12" autocomplete="new-password" /></label>
+          <label>角色<select id="new-role"><option value="doctor">医生</option><option value="administrator">系统管理员</option></select></label>
+          <button type="submit">创建账号</button>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <div class="card-heading"><div><h2>账号列表</h2><p>修改角色会立即撤销该账号的旧登录会话。</p></div><button id="refresh-users" class="secondary">刷新</button></div>
+        <div class="table-wrap"><table><thead><tr><th>账号</th><th>姓名与部门</th><th>状态</th><th>角色</th><th>数据范围</th></tr></thead><tbody id="user-rows"></tbody></table></div>
+      </section>
+
+      <section class="admin-card">
+        <div class="card-heading"><div><h2>最近审计事件</h2><p>只展示操作元数据，不展示密码、会话凭证或医疗结果。</p></div><button id="refresh-audit" class="secondary">刷新</button></div>
+        <div class="table-wrap"><table><thead><tr><th>时间</th><th>操作者</th><th>事件</th><th>结果</th><th>目标</th></tr></thead><tbody id="audit-rows"></tbody></table></div>
+      </section>
+    </main>
+
+    <dialog id="patient-dialog"><form method="dialog" class="dialog-card"><div class="card-heading"><div><h2 id="patient-dialog-title">患者范围</h2><p>勾选该账号可以查询的合成患者。</p></div><button value="cancel" class="icon-button" aria-label="关闭">×</button></div><div id="patient-options" class="patient-options"></div><div class="dialog-actions"><button value="cancel" class="secondary">取消</button><button id="save-patients" value="default" type="button">保存范围</button></div></form></dialog>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="/static/admin.js"></script>
+  </body>
+</html>

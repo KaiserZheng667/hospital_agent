@@ -1,0 +1,36 @@
+.admin-body { min-height: 100vh; background: #f3f7f5; }
+.admin-topbar { min-height: 78px; padding: 14px clamp(20px,5vw,70px); display: flex; align-items: center; justify-content: space-between; background: var(--navy); color: white; }
+.admin-topbar .brand { padding: 0; }
+.admin-identity { display: flex; align-items: center; gap: 15px; font-size: 13px; }
+.admin-identity a, .admin-identity button { color: #d7ebe3; background: transparent; border: 0; text-decoration: none; }
+.admin-main { width: min(1180px, calc(100% - 36px)); margin: 35px auto 70px; }
+.admin-heading { margin-bottom: 25px; }
+.admin-heading h1 { font-size: 32px; }
+.admin-heading > p:last-child, .card-heading p { color: var(--muted); }
+.admin-card { margin-top: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 15px; background: white; box-shadow: 0 8px 30px rgba(25,60,53,.04); }
+.card-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
+.card-heading h2 { margin: 0; font: 600 21px Georgia, serif; }
+.card-heading p { margin: 5px 0 18px; font-size: 12px; }
+.create-grid { display: grid; grid-template-columns: repeat(5,minmax(130px,1fr)) auto; align-items: end; gap: 12px; }
+.create-grid label { color: var(--muted); font-size: 11px; }
+.create-grid input, .create-grid select { width: 100%; margin-top: 6px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.create-grid button, .admin-card button, .dialog-actions button { padding: 10px 14px; border: 0; border-radius: 8px; background: var(--green); color: white; }
+button.secondary { border: 1px solid var(--line); background: white; color: var(--green-dark); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 12px 10px; border-top: 1px solid var(--line); text-align: left; vertical-align: middle; }
+th { color: var(--muted); font-size: 11px; }
+.account-name strong, .account-name span { display: block; }
+.account-name span { margin-top: 3px; color: var(--muted); font-size: 11px; }
+.role-controls { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; }
+.role-controls label { white-space: nowrap; font-size: 11px; }
+.status-active { color: #187451; }.status-disabled { color: #9a3333; }
+dialog { width: min(620px,calc(100% - 28px)); border: 0; border-radius: 15px; padding: 0; box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+dialog::backdrop { background: rgba(17,42,43,.68); }
+.dialog-card { padding: 24px; }
+.icon-button { padding: 2px 8px !important; background: transparent !important; color: var(--muted) !important; font-size: 25px; }
+.patient-options { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; max-height: 360px; overflow-y: auto; }
+.patient-options label { padding: 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 12px; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 20px; }
+@media (max-width: 900px) { .create-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px) { .create-grid, .patient-options { grid-template-columns: 1fr; } .admin-identity span { display:none; } }

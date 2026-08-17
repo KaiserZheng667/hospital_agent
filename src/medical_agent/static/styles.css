@@ -1,0 +1,104 @@
+:root {
+  color-scheme: light;
+  --ink: #172522;
+  --muted: #687773;
+  --line: #dce5e1;
+  --paper: #f7faf8;
+  --white: #ffffff;
+  --green: #1f6b59;
+  --green-dark: #164f43;
+  --green-soft: #e8f2ee;
+  --navy: #112a2b;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { min-height: 100vh; display: grid; grid-template-columns: 276px 1fr; }
+.sidebar { position: sticky; top: 0; height: 100vh; padding: 26px 18px 20px; background: var(--navy); color: white; display: flex; flex-direction: column; }
+.brand { display: flex; gap: 12px; align-items: center; padding: 0 8px 28px; }
+.brand-mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: #d7ebe3; color: var(--green-dark); font-family: Georgia, serif; font-weight: 700; }
+.brand strong, .brand span { display: block; }
+.brand strong { font-family: Georgia, "Times New Roman", serif; font-size: 20px; }
+.brand span { color: #9eb5ae; font-size: 12px; margin-top: 2px; }
+.new-session { width: 100%; border: 1px solid #3c5753; border-radius: 10px; padding: 11px 14px; color: white; background: #193736; text-align: left; }
+.new-session:hover { background: #204442; }
+.section-label { margin: 28px 10px 9px; color: #809993; font-size: 11px; letter-spacing: .12em; }
+.session-list { display: flex; flex-direction: column; gap: 5px; overflow-y: auto; }
+.session-item { border: 0; border-radius: 9px; background: transparent; color: #c7d5d1; padding: 10px 12px; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.session-item:hover, .session-item.active { color: white; background: #1c3e3c; }
+.identity-card { margin-top: auto; padding: 15px; border: 1px solid #34514d; border-radius: 12px; background: rgba(255,255,255,.035); }
+.identity-card strong, .identity-card span { display: block; }
+.identity-card span { margin-top: 4px; color: #94aaa5; font-size: 11px; }
+.identity-card button { margin-top: 12px; padding: 0; border: 0; background: transparent; color: #b8cbc6; font-size: 12px; }
+.identity-card .admin-link { display: block; margin-top: 12px; color: #d7ebe3; font-size: 12px; text-decoration: none; }
+
+.workspace { min-width: 0; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+.topbar { height: 92px; padding: 20px 34px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.88); display: flex; justify-content: space-between; align-items: center; }
+.eyebrow { margin: 0 0 4px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: .17em; }
+h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 600; }
+.mode-control { display: flex; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 22px; padding: 7px 12px; background: white; }
+.mode-control span:last-child { color: var(--ink); font-size: 12px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #2ba777; box-shadow: 0 0 0 4px #e0f5ed; }
+
+.messages { padding: 40px clamp(22px, 7vw, 100px); overflow-y: auto; }
+.empty-state { max-width: 640px; margin: 8vh auto 0; text-align: center; }
+.empty-icon { width: 54px; height: 54px; margin: auto auto 20px; border-radius: 16px; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-size: 24px; }
+.empty-state h2 { margin: 8px 0 10px; font: 600 34px/1.15 Georgia, serif; }
+.empty-state > p:not(.eyebrow) { color: var(--muted); }
+.suggestions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.suggestions button { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: white; color: var(--green-dark); }
+.patient-picker-label { display: block; margin-top: 28px; color: var(--muted); font-size: 12px; }
+.patient-picker { margin-top: 9px; width: min(420px, 100%); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; background: white; color: var(--ink); }
+.message { max-width: 760px; margin: 0 auto 22px; }
+.message.user { display: flex; justify-content: flex-end; }
+.bubble { padding: 14px 17px; border-radius: 14px; line-height: 1.65; white-space: pre-wrap; }
+.user .bubble { max-width: 75%; background: var(--green); color: white; border-bottom-right-radius: 4px; }
+.assistant .bubble { border: 1px solid var(--line); background: white; border-top-left-radius: 4px; box-shadow: 0 8px 30px rgba(25,60,53,.05); }
+.assistant-label { margin: 0 0 7px 2px; color: var(--green); font-size: 11px; font-weight: 750; letter-spacing: .08em; }
+.trace { margin-top: 9px; border: 1px solid var(--line); border-radius: 10px; background: #fbfdfc; }
+.trace summary { padding: 9px 12px; color: var(--muted); font-size: 12px; cursor: pointer; }
+.trace-list { margin: 0; padding: 0 14px 12px 31px; color: var(--muted); font-size: 12px; }
+.trace-list li { margin-top: 6px; }
+.typing { color: var(--muted); animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+
+.composer-wrap { padding: 14px clamp(22px, 7vw, 100px) 18px; border-top: 1px solid var(--line); background: rgba(247,250,248,.95); }
+.composer { max-width: 760px; margin: auto; display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 9px; border: 1px solid #cbd8d3; border-radius: 14px; background: white; box-shadow: 0 10px 36px rgba(25,60,53,.07); }
+.composer:focus-within { border-color: #76a99b; box-shadow: 0 0 0 3px #e5f1ed; }
+.composer textarea { resize: none; border: 0; outline: 0; padding: 10px; min-height: 42px; max-height: 130px; color: var(--ink); }
+.composer button { align-self: end; border: 0; border-radius: 10px; padding: 11px 18px; background: var(--green); color: white; font-weight: 700; }
+.composer button:hover { background: var(--green-dark); }
+.composer button:disabled { opacity: .5; cursor: wait; }
+.composer-wrap > p { margin: 8px auto 0; max-width: 760px; color: #8b9895; text-align: center; font-size: 11px; }
+.toast { position: fixed; right: 24px; bottom: 24px; transform: translateY(20px); opacity: 0; pointer-events: none; border-radius: 10px; padding: 11px 15px; background: #7f3131; color: white; transition: .2s; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.login-screen { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(17,42,43,.96); }
+.login-screen.hidden { display: none; }
+.login-card { width: min(410px, 100%); padding: 36px; border-radius: 18px; background: white; box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+.login-card .brand-mark { margin-bottom: 24px; }
+.login-card h2 { margin: 7px 0 8px; font: 600 28px/1.2 Georgia, serif; }
+.login-card > p:not(.eyebrow):not(.login-error) { margin: 0 0 25px; color: var(--muted); line-height: 1.5; font-size: 13px; }
+.login-card label { display: block; margin: 14px 0 6px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.login-card input { width: 100%; padding: 11px 12px; border: 1px solid #cbd8d3; border-radius: 9px; outline: none; }
+.login-card input:focus { border-color: #76a99b; box-shadow: 0 0 0 3px #e5f1ed; }
+.login-card > button { width: 100%; margin-top: 20px; padding: 12px; border: 0; border-radius: 9px; background: var(--green); color: white; font-weight: 700; }
+.login-card > button:disabled { opacity: .55; cursor: wait; }
+.login-error { min-height: 20px; margin: 12px 0 0; color: #9a3333; font-size: 12px; }
+
+@media (max-width: 760px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; padding: 16px; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+  .brand { padding: 0; }
+  .new-session { width: auto; }
+  .section-label, .session-list { display: none; }
+  .identity-card { grid-column: 1 / -1; margin: 0; }
+  .topbar { height: auto; padding: 17px 20px; }
+  .messages { padding: 28px 18px; }
+  .empty-state { margin-top: 3vh; }
+  .empty-state h2 { font-size: 29px; }
+  .composer-wrap { padding: 12px 14px; }
+}

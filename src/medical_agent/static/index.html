@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="本地医疗 AI Agent 教学工作台" />
+    <title>医疗 AI Agent 工作台</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">M</div>
+          <div><strong>MedAgent</strong><span>临床数据助手</span></div>
+        </div>
+
+        <button id="new-session" class="new-session">＋ 新建会话</button>
+
+        <div class="section-label">历史会话</div>
+        <nav id="session-list" class="session-list" aria-label="历史会话"></nav>
+
+        <div class="identity-card">
+          <strong id="user-name">未登录</strong>
+          <span id="department"></span>
+          <a id="admin-link" class="admin-link" href="/admin" hidden>系统管理</a>
+          <button id="logout-button" type="button">退出登录</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">OSTEOPOROSIS DATA WORKSPACE</p>
+            <h1 id="conversation-title">患者数据咨询</h1>
+          </div>
+          <div class="mode-control">
+            <span class="status-dot"></span>
+            <span>Qwen · Structured Planner</span>
+          </div>
+        </header>
+
+        <section id="messages" class="messages" aria-live="polite">
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon">✦</div>
+            <p class="eyebrow">MEDICAL AI AGENT</p>
+            <h2>你好，我是医疗数据助手</h2>
+            <p>我可以帮助你查询有权限访问的合成骨质疏松患者访视指标和历史趋势，也可以在当前会话中继续追问或复述结果。请问有什么可以帮助你？</p>
+            <div class="suggestions">
+              <button data-prompt="查询患者 P10086 的最新骨密度">查询 P10086 最新骨密度</button>
+              <button data-prompt="查询患者 P20001 的25-羟基维生素D">查询 P20001 维生素D</button>
+              <button data-prompt="查询患者 P30005 最近几个月的骨密度变化">查看 P30005 骨密度趋势</button>
+            </div>
+            <label class="patient-picker-label" for="patient-picker">选择患者后，再输入需要查询的内容</label>
+            <select id="patient-picker" class="patient-picker"></select>
+          </div>
+        </section>
+
+        <footer class="composer-wrap">
+          <form id="composer" class="composer">
+            <textarea id="message-input" rows="1" placeholder="输入患者问题，例如：查询 P10086 的最新骨密度" required></textarea>
+            <button id="send-button" type="submit" aria-label="发送">发送</button>
+          </form>
+          <p>仅用于教学演示，不提供诊断或治疗建议。</p>
+        </footer>
+      </main>
+    </div>
+    <div id="login-screen" class="login-screen">
+      <form id="login-form" class="login-card">
+        <div class="brand-mark">M</div>
+        <p class="eyebrow">SECURE SIGN IN</p>
+        <h2>登录医疗数据工作台</h2>
+        <p>使用分配给你的账号登录。系统将根据账号权限限制患者数据范围。</p>
+        <label for="username">用户名</label>
+        <input id="username" name="username" autocomplete="username" required />
+        <label for="password">密码</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+        <button id="login-button" type="submit">登录</button>
+        <p id="login-error" class="login-error" role="alert"></p>
+      </form>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
